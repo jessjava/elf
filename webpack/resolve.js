@@ -9,3 +9,6 @@ exports.resolveApp = function resolveApp(relativePath) {
 exports.resolveOwn = function resolveOwn(relativePath) {
   return path.resolve(__dirname, relativePath);
 }
+
+
+console.log(__dirname);

@@ -5,19 +5,14 @@ const autoprefixer = require('autoprefixer')
 const sprites = require('postcss-sprites')
 const assets = require('postcss-assets')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
-const {
-  resolveApp,
-  resolveOwn
-} = require('./resolve.js')
-const {
-  HeadJavascriptInjectPlugin
-} = require('./plugins.js')
+const { resolveApp,resolveOwn } = require('./resolve.js')
+const { HeadJavascriptInjectPlugin } = require('./plugins.js')
 const allConfig = require('../config/index.js')
 const ROOT = process.cwd()
 const NODE_ENV = process.env.NODE_ENV || ''
 const config = _.merge(allConfig, allConfig[NODE_ENV.toUpperCase()])
-
 const zeptoPath = resolveOwn('../node_modules/zepto/dist/zepto.js')
+
 
 const baseConfig = {
   output: {
@@ -65,7 +60,6 @@ const baseConfig = {
     new HtmlWebpackPlugin({
       template: resolveApp(config.htmlWebpackPluginOptions.template)
     }),
-    // new webpack.DefinePlugin({}),
     new HeadJavascriptInjectPlugin()
   ],
   externals: config.externals || {}
@@ -119,28 +113,6 @@ if (config.enableREM) {
         prop: 'background-size',
         value: image.spriteWidth / image.ratio + 'px ' + image.spriteHeight / image.ratio + 'px'
       }))
-
-      // rule.insertAfter(rule.last, postcss.decl({
-      //   prop: 'background-repeat',
-      //   value: 'no-repeat'
-      // }))
-
-      // rule.insertAfter(rule.last, postcss.decl({
-      //   prop: 'width',
-      //   value: image.coords.width + 'px'
-      // }))
-
-      // rule.insertAfter(rule.last, postcss.decl({
-      //   prop: 'height',
-      //   value: image.coords.height + 'px'
-      // }))
-
-      // ['width', 'height'].forEach(function (prop) {
-      //     rule.insertAfter(rule.last, postcss.decl({
-      //         prop: prop,
-      //         value: Math.round((image.coords[prop] + 1) / (config.designLayoutWidth / 20) * 100000) / 100000 + 'rem'
-      //     }))
-      // })
     }
   }
 }

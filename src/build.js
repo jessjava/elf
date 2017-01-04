@@ -12,7 +12,7 @@ clearConsole()
 console.log('')
 console.log(chalk.cyan('  Prepare build ...'))
 console.log('')
-console.log(chalk.cyan('  Empty directory: ') + chalk.cyan.inverse(buildPath))
+console.log(chalk.cyan('  Empty directory: ') + chalk.red.inverse(buildPath))
 fs.removeSync(buildPath)
 fs.mkdirsSync(buildPath)
 
