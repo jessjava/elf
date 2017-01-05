@@ -78,12 +78,8 @@ __postcss_plugins.push(assets(config.assetsOptions))
 let _spritesObj = _.merge(config.spritesOptions, {
   stylesheetPath: resolveApp('src/css/'),
   spritePath: resolveApp('src/img/'),
-  retina: true,
+  retina: true,//支持retina，可以实现合并不同比例图片
   relativeTo: 'rule',
-  // spritesmith: {
-  //   algorithm: 'left-right',
-  //   padding: 1
-  // },
   groupBy: function (image) {
     let g = /img\/([a-z]+)\/[a-z A-Z _\- 1-9]+\.png/.exec(image.url)
     let g_name = g ? g[1] : g
